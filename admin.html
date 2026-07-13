@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JanArt Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div>
+        <p class="eyebrow">JanArt Admin</p>
+        <h1>Manage the gallery</h1>
+        <p>Update artwork, descriptions, and upload new painting images locally.</p>
+      </div>
+      <a class="cta-button" href="index.html">View gallery</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container admin-grid">
+        <div id="loginPanel" class="admin-panel">
+          <h2>Admin login</h2>
+          <p>Local admin access is protected by a simple password.</p>
+          <form id="loginForm">
+            <div class="form-field">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter admin password" required />
+            </div>
+            <button type="submit" class="cta-button">Sign in</button>
+          </form>
+          <p class="status-message hidden" id="loginMessage"></p>
+        </div>
+
+        <div id="adminPanel" class="admin-panel hidden">
+          <div class="admin-actions">
+            <button id="addPainting" class="add-button">Add painting</button>
+            <button id="logout" class="logout-button">Log out</button>
+          </div>
+
+          <div id="newPaintingForm" class="admin-card hidden">
+            <h3>Add new painting</h3>
+            <div class="form-field">
+              <label for="newTitle">Title</label>
+              <input id="newTitle" type="text" placeholder="Painting title" />
+            </div>
+            <div class="form-field">
+              <label for="newImage">Image URL</label>
+              <input id="newImage" type="text" placeholder="https://example.com/image.jpg" />
+            </div>
+            <div class="form-field">
+              <label for="newFile">Upload local image</label>
+              <input id="newFile" type="file" accept="image/*" />
+            </div>
+            <div class="form-field">
+              <label for="newDescription">Description</label>
+              <textarea id="newDescription" placeholder="Short description"></textarea>
+            </div>
+            <div class="admin-actions">
+              <button id="saveNewPainting" class="save-button">Save new</button>
+              <button id="cancelNewPainting" class="delete-button">Cancel</button>
+            </div>
+          </div>
+          <p class="status-message hidden" id="adminMessage"></p>
+          <div id="paintingList" class="admin-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

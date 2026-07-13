@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JanArt Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div>
+        <p class="eyebrow">JanArt Gallery</p>
+        <h1>Paintings by Janart</h1>
+        <p>Discover original artwork, browse the collection, and ask about commissions.</p>
+      </div>
+      <nav class="main-nav">
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section section-about">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">About the artist</span>
+          <h2>A studio practice built around light and texture</h2>
+          <p>Janart paints atmospheric pieces for collectors and interior spaces. Each work explores color, contrast, and story.</p>
+          <p>The gallery is managed locally using the admin panel, so artwork details can be updated quickly and the public site remains current.</p>
+        </div>
+        <div class="about-card">
+          <p><strong>Contact details</strong></p>
+          <p>Email: <a href="mailto:janart@example.com">janart@example.com</a></p>
+          <p>Phone: +44 1234 567890</p>
+          <p>Location: London, UK</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section section-gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Gallery</span>
+          <h2>Current collection</h2>
+          <p id="galleryIntro">Click any painting to view details and inquire directly with the artist.</p>
+        </div>
+        <div id="galleryGrid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <div class="container contact-panel">
+        <div>
+          <span class="eyebrow">Commission</span>
+          <h2>Request a custom painting</h2>
+          <p>Want a bespoke work for your space? Reach out with your idea, and Janart will share pricing and timing.</p>
+        </div>
+        <a class="secondary-button" id="inquireButton" href="mailto:janart@example.com?subject=Painting%20Inquiry">Email the artist</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 JanArt Gallery. Local gallery managed with browser storage.</p>
+      <a class="cta-button" href="admin.html" style="margin-top: 1rem;">Admin</a>
+    </div>
+  </footer>
+
+  <div id="paintingModal" class="painting-modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Close details">×</button>
+      <div class="modal-image"><img id="modalImage" src="" alt="" /></div>
+      <div class="modal-details">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <a id="modalInquiry" class="secondary-button" href="mailto:janart@example.com">Inquire about this painting</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
