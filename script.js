@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const paintings = loadPaintings();
   renderGallery(paintings);
+  const events = loadEvents();
+  renderEvents(events);
   setupModal();
 });
 
@@ -42,6 +44,31 @@ function renderGallery(paintings) {
       if (painting) openModal(painting);
     }
   });
+}
+
+function renderEvents(events) {
+  const list = document.getElementById("eventsList");
+  if (!list) return;
+
+  // Sort upcoming events by date
+  const sorted = events.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  list.innerHTML = sorted
+    .map((ev) => {
+      const date = new Date(ev.date);
+      const dateLabel = date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      return `
+        <article class="event-item">
+          <div class="event-date">${dateLabel}</div>
+          <div class="event-body">
+            <h3>${ev.title}</h3>
+            <p class="muted">${ev.location}</p>
+            <p class="event-desc">${ev.description}</p>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 }
 
 function setupModal() {

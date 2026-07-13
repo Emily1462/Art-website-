@@ -64,3 +64,56 @@ function createPaintingTemplate() {
     description: "Update the title, image URL, and description for this painting."
   };
 }
+
+/* Events storage and helpers */
+const JANART_EVENTS_KEY = "janartEvents";
+
+const defaultEvents = [
+  {
+    id: 1,
+    title: "Summer Exhibition Opening",
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 7).toISOString(),
+    location: "JanArt Gallery - Main Room",
+    description: "Join us for the opening of the Summer Exhibition featuring new works by Janart."
+  },
+  {
+    id: 2,
+    title: "Artist Talk: Painting Light",
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 14).toISOString(),
+    location: "JanArt Gallery - Studio",
+    description: "A short talk and Q&A with the artist about working with light and texture."
+  }
+];
+
+function loadEvents() {
+  const stored = localStorage.getItem(JANART_EVENTS_KEY);
+  if (!stored) {
+    saveEvents(defaultEvents);
+    return [...defaultEvents];
+  }
+  try {
+    return JSON.parse(stored) || [...defaultEvents];
+  } catch (error) {
+    console.warn("Failed to parse events storage, restoring defaults.", error);
+    saveEvents(defaultEvents);
+    return [...defaultEvents];
+  }
+}
+
+function saveEvents(events) {
+  localStorage.setItem(JANART_EVENTS_KEY, JSON.stringify(events));
+}
+
+function createEventTemplate() {
+  const events = loadEvents();
+  const nextId = events.length ? Math.max(...events.map((e) => e.id)) + 1 : 1;
+  const soon = new Date();
+  soon.setDate(soon.getDate() + 21);
+  return {
+    id: nextId,
+    title: "New event",
+    date: soon.toISOString(),
+    location: "Gallery",
+    description: "Add event details for the public calendar."
+  };
+}

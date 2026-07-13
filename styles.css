@@ -282,6 +282,42 @@ textarea {
   object-fit: cover;
 }
 
+/* Events list styles */
+.events-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.event-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: linear-gradient(180deg, var(--surface), #f7f2ea);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(59,39,31,0.04);
+}
+
+.event-date {
+  min-width: 84px;
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.event-body h3 {
+  margin: 0 0 0.35rem;
+}
+
+.event-desc {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
 @media (max-width: 900px) {
   .about-grid,
   .contact-panel,
